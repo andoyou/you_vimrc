@@ -149,6 +149,9 @@ nmap - <Plug>(choosewin)
 let g:choosewin_overlay_enable = 1
 nnoremap <C-c> :call ToggleCase()<cr>
 
+"Linediff
+xnoremap <C-l><C-i> :Linediff<C-j>
+
 nnoremap s <Nop>
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k

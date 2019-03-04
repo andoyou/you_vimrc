@@ -2,6 +2,9 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'AndrewRadev/linediff.vim'
+
+[[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
