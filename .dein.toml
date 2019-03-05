@@ -5,6 +5,9 @@ repo = 'Shougo/dein.vim'
 repo = 'AndrewRadev/linediff.vim'
 
 [[plugins]]
+repo = 'Lokaltog/vim-easymotion'
+
+[[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
