@@ -12,3 +12,7 @@ vimrcにてコマンドショートカットあり
 カーソル移動をさらに爆速にしてくれるやつ。
 [参考リンク](http://haya14busa.com/mastering-vim-easymotion/)
 未設定のためvimrcはコメントアウト中
+
+### Shougo/neosnippet.vim Shougo/neosnippet.vim
+スニペット。
+拡張子に合わせて入力された式から一定を入力してくれる。
