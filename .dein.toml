@@ -2,6 +2,21 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'AndrewRadev/linediff.vim'
+
+[[plugins]]
+repo = 'Lokaltog/vim-easymotion'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+
+[[plugins]]
+repo = 'Shougo/vimshell.vim'
+
+[[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
