@@ -16,3 +16,8 @@ vimrcにてコマンドショートカットあり
 ### Shougo/neosnippet.vim Shougo/neosnippet.vim
 スニペット。
 拡張子に合わせて入力された式から一定を入力してくれる。
+
+### airblade/vim-gitgutter
+gitの追加行を表示してくれるやつ。
+表示がvim開いた時diffらなくても見れるので楽。
+
