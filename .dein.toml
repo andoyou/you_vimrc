@@ -158,3 +158,6 @@ repo = 'junegunn/fzf.vim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'elzr/vim-json'
