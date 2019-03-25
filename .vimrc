@@ -57,7 +57,7 @@ set tabstop=4
 set title
 set tw=0
 set wrapscan
-set clipboard+=unnamedplus
+set clipboard+=unnamed
 "vim --version | grep clipboard
 " if -clipboard
 " https://qiita.com/cawpea/items/3ca4ab80fc465d8eed7e
