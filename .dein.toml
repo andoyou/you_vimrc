@@ -140,3 +140,16 @@ repo = 'leafgarland/typescript-vim'
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+[[plugins]]
+repo = 'skanehira/docker.vim'
+
+# nvim用
+[[plugins]]
+repo = 'sonjapeterson/1989.vim'
