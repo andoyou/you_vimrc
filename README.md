@@ -50,6 +50,8 @@ clone中断で不完全な `.installing` ディレクトリが残った場合は
 - `vim/filetypes.vim`: ファイル種別・インデント（再読込しても重複しない）
 - `vim/mappings.vim`: キー割り当て
 - `vim/clipboard.vim`: Vim用のクリップボード連携
+- `vim/markdown.vim`: 保存済みMarkdownを既定ブラウザで開くコマンド
+- `PRACTICE.md`: 日常的なVim操作とこの設定固有コマンドの早見表
 - `dein.toml`: プラグイン定義
 - `plugins.lock.json`: dein本体を含む取得先と固定コミット
 - `install.py`, `lib/`: 導入・依存検査・バックアップ・復元
@@ -91,6 +93,12 @@ Waylandのwl-copy/wl-paste、X11のxclipです。WSLでwin32yankがなければ
 端末側のコピー・貼り付けを使うか、別途その導入を行ってください。
 SSH越しのクリップボードやGUIの接続成否は端末・接続先に依存します。
 外部ツールもVimネイティブのクリップボード機能もない環境では編集自体は可能ですが、最初のヤンク時に一度だけ警告を出します。
+
+## Markdownを既定ブラウザで開く
+
+保存済みのMarkdownバッファで `:MarkdownOpen` を実行すると、既定ブラウザ（またはOS既定ハンドラ）でファイルを開きます。未保存の内容は開かないため、先に `:w` してください。Linuxは`xdg-open`、macOSは`open`、WSLは`wslview`またはPowerShell、WindowsはPowerShellを使用します。ブラウザがMarkdownをHTMLとして描画するか、生テキストとして表示するかはブラウザ・OSの関連付けに依存します。
+
+日常操作とコマンド一覧は [PRACTICE.md](PRACTICE.md) を参照してください。
 
 ## 更新・再現
 

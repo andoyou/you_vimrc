@@ -37,7 +37,7 @@ def main():
         parser.error('Vim 8.2+ is required (Neovim is not supported)')
     source, target_home = args.source.expanduser().resolve(), args.home.expanduser().resolve()
     required = ['vimrc', 'dein.toml', 'plugins.lock.json']
-    required += ['vim/' + name + '.vim' for name in ['options', 'plugins', 'filetypes', 'mappings', 'clipboard']]
+    required += ['vim/' + name + '.vim' for name in ['options', 'plugins', 'filetypes', 'mappings', 'clipboard', 'markdown']]
     for name in required:
         if not (source / name).is_file():
             parser.error(f'Missing source file: {name}')

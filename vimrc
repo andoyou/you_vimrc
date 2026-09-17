@@ -1,7 +1,7 @@
 " Vim 8.2+; resolve the installed symlink back to this repository.
 set nocompatible
 let g:personal_vim_root = fnamemodify(resolve(expand('<sfile>:p')), ':h')
-for s:module in ['options', 'plugins', 'filetypes', 'mappings', 'clipboard']
+for s:module in ['options', 'plugins', 'filetypes', 'mappings', 'clipboard', 'markdown']
   execute 'source ' . fnameescape(g:personal_vim_root . '/vim/' . s:module . '.vim')
 endfor
 unlet s:module

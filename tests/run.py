@@ -77,13 +77,26 @@ bin_dir = work / 'bin'
 bin_dir.mkdir()
 (bin_dir / 'win32yank').write_text('#!/bin/sh\nif [ "$1" = "-i" ]; then cat > "$CLIPBOARD_TEST_COPY"; else printf "alpha\\r\\nbeta\\r\\n"; fi\n')
 (bin_dir / 'win32yank').chmod(0o755)
+(bin_dir / 'wslpath').write_text('#!/bin/sh\nprintf "C:\\\\mock\\\\document.md\\n"\n')
+(bin_dir / 'wslpath').chmod(0o755)
+(bin_dir / 'powershell.exe').write_text('#!/bin/sh\nprintf "%s\\n" "$@" > "$MARKDOWN_TEST_COMMAND"\n')
+(bin_dir / 'powershell.exe').chmod(0o755)
 env.update(PATH=str(bin_dir) + os.pathsep + os.environ['PATH'],
-           CLIPBOARD_TEST_COPY=str(work / 'copied.txt'), VIM_TEST_ERRORS=str(work / 'clipboard-errors.txt'))
+           CLIPBOARD_TEST_COPY=str(work / 'copied.txt'), VIM_TEST_ERRORS=str(work / 'clipboard-errors.txt'),
+           MARKDOWN_TEST_COMMAND=str(work / 'markdown-command.txt'),
+           MARKDOWN_TEST_FILE=str(work / 'document.md'))
 run(['vim', '-i', 'NONE', '-n', '-es', '-u', str(root / 'vimrc'),
      '-S', str(root / 'tests/clipboard.vim')], env=env)
 clipboard_errors = work / 'clipboard-errors.txt'
 if clipboard_errors.exists():
     raise RuntimeError(clipboard_errors.read_text())
 results.append('mock clipboard: copy and CRLF-normalized line paste passed')
+(work / 'document.md').write_text('# test\n')
+run(['vim', '-i', 'NONE', '-n', '-es', '-u', str(root / 'vimrc'),
+     '-S', str(root / 'tests/markdown.vim')], env=env)
+markdown_errors = work / 'markdown-errors.txt'
+if markdown_errors.exists():
+    raise RuntimeError(markdown_errors.read_text())
+results.append('mock browser: saved Markdown opens with a safely quoted default-handler command')
 (work / 'results.json').write_text(json.dumps(results, indent=2) + '\n')
 print(results[-1])
