@@ -8,6 +8,8 @@
 | --- | --- |
 | `:MarkdownOpen` | 保存済みの Markdown をOS既定ブラウザ/ハンドラで開く。未保存なら `:w` 後に実行。 |
 | `:Open %` | Vim 9.2以上の標準コマンド。現在のファイルをOS既定ハンドラで開く。Markdown以外にも使える。 |
+| `:PrevimOpen` | `previm`でMarkdownをHTML化し、既定ブラウザでリアルタイムプレビューを開始。保存時に更新。 |
+| `:PrevimRefresh` | 開いている`previm`プレビューを手動更新。 |
 | `:ClipboardCopy` | 現在行をOSクリップボードへコピー。`:'<,'>ClipboardCopy`なら選択行。 |
 | `:ClipboardPaste` | OSクリップボードを現在行の下へ貼り付け。 |
 | `sw` | 保存（`:w`）。 |

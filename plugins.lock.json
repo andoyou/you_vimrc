@@ -13,5 +13,15 @@
     "repo": "sonjapeterson/1989.vim",
     "url": "https://github.com/sonjapeterson/1989.vim.git",
     "rev": "5a641afb69fc78a2b4d22dff4741a51865e46c02"
+  },
+  {
+    "repo": "previm/previm",
+    "url": "https://github.com/previm/previm.git",
+    "rev": "29524dba1dfad1e77a8670b8c133af96f31582a7"
+  },
+  {
+    "repo": "tyru/open-browser.vim",
+    "url": "https://github.com/tyru/open-browser.vim.git",
+    "rev": "7d4c1d8198e889d513a030b5a83faa07606bac27"
   }
 ]

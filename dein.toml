@@ -6,3 +6,11 @@ rev = '690d061b591525890f1471c6675bcb5bdc8cdff9'
 [[plugins]]
 repo = 'sonjapeterson/1989.vim'
 rev = '5a641afb69fc78a2b4d22dff4741a51865e46c02'
+
+[[plugins]]
+repo = 'previm/previm'
+rev = '29524dba1dfad1e77a8670b8c133af96f31582a7'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+rev = '7d4c1d8198e889d513a030b5a83faa07606bac27'

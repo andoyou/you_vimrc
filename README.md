@@ -98,6 +98,12 @@ SSH越しのクリップボードやGUIの接続成否は端末・接続先に�
 
 保存済みのMarkdownバッファで `:MarkdownOpen` を実行すると、既定ブラウザ（またはOS既定ハンドラ）でファイルを開きます。未保存の内容は開かないため、先に `:w` してください。Linuxは`xdg-open`、macOSは`open`、WSLは`wslview`またはPowerShell、WindowsはPowerShellを使用します。ブラウザがMarkdownをHTMLとして描画するか、生テキストとして表示するかはブラウザ・OSの関連付けに依存します。
 
+## Markdownのリアルタイムプレビュー
+
+`previm/previm`を導入済みです。Markdownバッファで `:PrevimOpen` を実行すると、ローカルHTMLへ変換したプレビューを既定ブラウザで開きます。保存すると `:PrevimRefresh` 相当の更新が行われ、編集しながら確認できます。ブラウザ起動は `tyru/open-browser.vim` が担当します。
+
+同梱アセットを使うため、通常の起動・プレビューでネットワークアクセスは発生しません。`:PrevimUpdateAssets` は外部CDNからアセットを取得する任意コマンドなので、この設定では実行しないでください。
+
 日常操作とコマンド一覧は [PRACTICE.md](PRACTICE.md) を参照してください。
 
 ## 更新・再現
