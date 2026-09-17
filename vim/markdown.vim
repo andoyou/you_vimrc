@@ -13,8 +13,14 @@ function! s:BrowserCommand(path) abort
       return ['wslview', a:path]
     endif
     if executable('wslpath') && executable('powershell.exe')
-      let l:windows_path = trim(systemlist(['wslpath', '-w', '--', a:path])[0])
-      if v:shell_error || empty(l:windows_path)
+      " systemlist() in Vim takes a command string, unlike job_start().
+      " shellescape() keeps a filename from becoming shell syntax here.
+      let l:windows_paths = systemlist('wslpath -w -- ' . shellescape(a:path))
+      if v:shell_error || empty(l:windows_paths)
+        return []
+      endif
+      let l:windows_path = trim(l:windows_paths[0])
+      if empty(l:windows_path)
         return []
       endif
       " PowerShell single quotes are escaped by doubling them; LiteralPath avoids
