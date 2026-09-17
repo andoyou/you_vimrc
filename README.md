@@ -51,6 +51,7 @@ clone中断で不完全な `.installing` ディレクトリが残った場合は
 - `vim/mappings.vim`: キー割り当て
 - `vim/clipboard.vim`: Vim用のクリップボード連携
 - `vim/markdown.vim`: 保存済みMarkdownを既定ブラウザで開くコマンド
+- `vim/console.vim`: Codex/Claude CLIを分割端末で開くコマンド
 - `PRACTICE.md`: 日常的なVim操作とこの設定固有コマンドの早見表
 - `dein.toml`: プラグイン定義
 - `plugins.lock.json`: dein本体を含む取得先と固定コミット
@@ -97,6 +98,17 @@ SSH越しのクリップボードやGUIの接続成否は端末・接続先に�
 ## Markdownを既定ブラウザで開く
 
 保存済みのMarkdownバッファで `:MarkdownOpen` を実行すると、既定ブラウザ（またはOS既定ハンドラ）でファイルを開きます。未保存の内容は開かないため、先に `:w` してください。Linuxは`xdg-open`、macOSは`open`、WSLは`wslview`またはPowerShell、WindowsはPowerShellを使用します。ブラウザがMarkdownをHTMLとして描画するか、生テキストとして表示するかはブラウザ・OSの関連付けに依存します。
+
+## Codex / Claude を分割端末で開く
+
+現在のバッファから方向を指定して、対話入力できる端末バッファを開きます。
+
+- `:CodexConsole up` / `down` / `right` / `left`
+- `:ClaudeConsole up` / `down` / `right` / `left`
+
+端末ではすぐに入力できます。Terminal-Normalモードへ戻るには `Ctrl-W N` を使います。`codex` または `claude` の実行ファイルがPATH上にない場合は、分割せずにエラーを表示します。コマンド名を変える必要がある環境では `~/.vim/local.vim` に `let g:personal_codex_command = '...'` または `let g:personal_claude_command = '...'` を設定できます。
+
+deinが未導入・不完全・読み込み失敗のときも、Vimはネットワーク接続を試みずプラグインをスキップして起動します。プラグインを使うには、接続可能なときに `install.py` をあらためて実行してください。
 
 ## Markdownのリアルタイムプレビュー
 

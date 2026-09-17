@@ -69,6 +69,16 @@ run(['vim', '-i', 'NONE', '-n', '-es', '-u', str(root / 'vimrc'),
      '-V1' + str(home / 'vim.log'), '+qa!'], env=env)
 assert 'Error detected' not in (home / 'vim.log').read_text()
 results.append('missing plugins: startup succeeds with default colors')
+# A partial/corrupt dein checkout is also an offline-safe startup condition.
+home = work / 'broken-dein-home'
+manager = home / '.vim/dein/repos/github.com/Shougo/dein.vim/autoload'
+manager.mkdir(parents=True)
+(manager / 'dein.vim').write_text("throw 'broken dein'\n")
+env = dict(os.environ, HOME=str(home), XDG_CACHE_HOME=str(home / '.cache'))
+run(['vim', '-i', 'NONE', '-n', '-es', '-u', str(root / 'vimrc'),
+     '-V1' + str(home / 'vim.log'), '+qa!'], env=env)
+assert 'Error detected' not in (home / 'vim.log').read_text()
+results.append('broken dein: startup falls back to the built-in configuration')
 (work / 'results.json').write_text(json.dumps(results, indent=2) + '\n')
 print('\n'.join(results))
 
@@ -81,10 +91,13 @@ bin_dir.mkdir()
 (bin_dir / 'wslpath').chmod(0o755)
 (bin_dir / 'powershell.exe').write_text('#!/bin/sh\nprintf "%s\\n" "$@" > "$MARKDOWN_TEST_COMMAND"\n')
 (bin_dir / 'powershell.exe').chmod(0o755)
+(bin_dir / 'mock-codex').write_text('#!/bin/sh\nwhile :; do sleep 1; done\n')
+(bin_dir / 'mock-codex').chmod(0o755)
 env.update(PATH=str(bin_dir) + os.pathsep + os.environ['PATH'],
            CLIPBOARD_TEST_COPY=str(work / 'copied.txt'), VIM_TEST_ERRORS=str(work / 'clipboard-errors.txt'),
            MARKDOWN_TEST_COMMAND=str(work / 'markdown-command.txt'),
-           MARKDOWN_TEST_FILE=str(work / 'document.md'))
+           MARKDOWN_TEST_FILE=str(work / 'document.md'),
+           CONSOLE_TEST_ERRORS=str(work / 'console-errors.txt'))
 run(['vim', '-i', 'NONE', '-n', '-es', '-u', str(root / 'vimrc'),
      '-S', str(root / 'tests/clipboard.vim')], env=env)
 clipboard_errors = work / 'clipboard-errors.txt'
@@ -98,5 +111,11 @@ markdown_errors = work / 'markdown-errors.txt'
 if markdown_errors.exists():
     raise RuntimeError(markdown_errors.read_text())
 results.append('mock browser: saved Markdown opens with a safely quoted default-handler command')
+run(['vim', '-i', 'NONE', '-n', '-es', '-u', str(root / 'vimrc'),
+     '-S', str(root / 'tests/console.vim')], env=env)
+console_errors = work / 'console-errors.txt'
+if console_errors.exists():
+    raise RuntimeError(console_errors.read_text())
+results.append('mock Codex: opens an interactive terminal buffer in the requested split')
 (work / 'results.json').write_text(json.dumps(results, indent=2) + '\n')
 print(results[-1])

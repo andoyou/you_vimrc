@@ -12,6 +12,8 @@
 | `:PrevimRefresh` | 開いている`previm`プレビューを手動更新。 |
 | `:ClipboardCopy` | 現在行をOSクリップボードへコピー。`:'<,'>ClipboardCopy`なら選択行。 |
 | `:ClipboardPaste` | OSクリップボードを現在行の下へ貼り付け。 |
+| `:CodexConsole {up\|down\|right\|left}` | 指定方向に端末バッファを開き、Codex CLIを対話入力で起動。 |
+| `:ClaudeConsole {up\|down\|right\|left}` | 指定方向に端末バッファを開き、Claude CLIを対話入力で起動。 |
 | `sw` | 保存（`:w`）。 |
 | `sj` `sk` `sh` `sl` | 下・上・左・右のウィンドウへ移動。 |
 | `-` | 次のウィンドウへ移動。 |
