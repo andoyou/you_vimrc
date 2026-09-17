@@ -1,0 +1,17 @@
+[
+  {
+    "repo": "Shougo/dein.vim",
+    "url": "https://github.com/Shougo/dein.vim.git",
+    "rev": "32cd283e564511d26cb25c6bc00d573183563c32"
+  },
+  {
+    "repo": "preservim/nerdtree",
+    "url": "https://github.com/preservim/nerdtree.git",
+    "rev": "690d061b591525890f1471c6675bcb5bdc8cdff9"
+  },
+  {
+    "repo": "sonjapeterson/1989.vim",
+    "url": "https://github.com/sonjapeterson/1989.vim.git",
+    "rev": "5a641afb69fc78a2b4d22dff4741a51865e46c02"
+  }
+]

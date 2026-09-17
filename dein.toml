@@ -1,0 +1,8 @@
+# Pinned versions; keep in sync with plugins.lock.json.
+[[plugins]]
+repo = 'preservim/nerdtree'
+rev = '690d061b591525890f1471c6675bcb5bdc8cdff9'
+
+[[plugins]]
+repo = 'sonjapeterson/1989.vim'
+rev = '5a641afb69fc78a2b4d22dff4741a51865e46c02'
